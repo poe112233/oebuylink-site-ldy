@@ -322,6 +322,44 @@ footer.site-ft {
   .rel-grid.four { grid-template-columns: 1fr; }
 }
 
+/* ---------- 圣诞元素：飘雪 / 帽子 / hero 装饰 / 页脚图标 ---------- */
+.snow { position: fixed; inset: 0; z-index: 4; pointer-events: none; overflow: hidden; }
+.snow i {
+  position: absolute; top: -10vh; border-radius: 50%; background: #fff;
+  box-shadow: 0 0 4px rgba(15,63,53,.30), 0 0 10px rgba(193,154,74,.16);
+  opacity: .85;
+  animation-name: fall; animation-timing-function: linear; animation-iteration-count: infinite;
+}
+@keyframes fall {
+  0%   { transform: translate3d(0, -12vh, 0) rotate(0deg); }
+  100% { transform: translate3d(var(--drift, 2vw), 114vh, 0) rotate(240deg); }
+}
+@media (prefers-reduced-motion: reduce) { .snow { display: none; } }
+
+.logo { position: relative; }
+.logo-hat {
+  position: absolute; left: 21px; top: -13px; width: 24px; height: auto;
+  transform: rotate(10deg); pointer-events: none;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.14));
+}
+
+.hero-deco {
+  position: absolute; right: 3.5%; top: 50%; transform: translateY(-50%);
+  display: flex; align-items: flex-end; gap: 22px;
+  color: rgba(193,154,74,.88); pointer-events: none; z-index: 1;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,.18));
+}
+.hero-deco .ic-tree { width: 106px; height: auto; opacity: .92; }
+.hero-deco .ic-gift { width: 76px; height: auto; opacity: .86; }
+.hero-deco .ic-bauble { width: 46px; height: auto; opacity: .82; }
+.hero-deco .ic-hat { width: 68px; height: auto; opacity: .95; transform: rotate(-8deg); }
+@media (max-width: 1080px) { .hero-deco { display: none; } }
+
+.ft-icons { display: flex; gap: 14px; align-items: center; margin-top: 14px; color: rgba(193,154,74,.9); }
+.ft-icons .ic-tree { width: 26px; height: auto; }
+.ft-icons .ic-gift { width: 26px; height: auto; }
+.ft-icons .ic-bauble { width: 20px; height: auto; }
+
 /* ---------- 响应式 ---------- */
 @media (max-width: 960px) {
   .pgrid { grid-template-columns: repeat(3, 1fr); }
@@ -334,6 +372,7 @@ footer.site-ft {
   .hero { padding: 40px 0 34px; }
   .hero h1 { font-size: 27px; line-height: 1.24; }
   .hero .sub { font-size: 15px; }
+  .snow i:nth-child(n+17) { display: none; }
   .hdr-in { height: auto; flex-wrap: wrap; padding: 10px 0 8px; gap: 8px; }
   .logo { order: 1; }
   .lang-menu { order: 2; margin-left: auto; }
